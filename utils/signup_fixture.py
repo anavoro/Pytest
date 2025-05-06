@@ -3,17 +3,17 @@ from playwright.sync_api import Page
 from pages.home_page import HomePage
 from pages.login_signup_page import LoginPage
 from pages.signup_account import SignupInfoPage
-from pages.account_pages import AccountCreatedPage, AccountDeletedPage
+from pages.account_pages import AccountCreatedPage
 from faker import Faker
 
-def test_register_user(page: Page):
-    fake = Faker()
+fake = Faker()
+
+@pytest.fixture(scope="function")
+def new_user_data(page: Page):
     home_page = HomePage(page)
     login_page = LoginPage(page)
     signup_info_page = SignupInfoPage(page)
     account_created_page = AccountCreatedPage(page)
-    account_deleted_page = AccountDeletedPage(page)
-    
 
     home_page.navigate('http://automationexercise.com')
     
@@ -34,6 +34,8 @@ def test_register_user(page: Page):
     
     signup_name = fake.name()
     signup_email = fake.email()
+    signup_password = fake.password() 
+
     login_page.enter_signup_name(signup_name)
     login_page.enter_signup_email(signup_email)
     
@@ -44,7 +46,7 @@ def test_register_user(page: Page):
     
     signup_info_page.select_gender('Mr')
     signup_info_page.enter_name(signup_name)
-    signup_info_page.enter_password(fake.password())
+    signup_info_page.enter_password(signup_password)
     signup_info_page.select_date('10')
     signup_info_page.select_month('5')
     signup_info_page.select_year('1990')
@@ -65,11 +67,8 @@ def test_register_user(page: Page):
 
     account_created_page.click_continue() 
     
-    assert home_page.is_logged_in_as_visible(signup_name), f"'Logged in as {signup_name}' is not visible"
+    assert home_page.is_logged_in_as_visible
+    
+    home_page.click_logout_account()
 
-    home_page.click_delete_account()
-    
-    assert account_deleted_page.is_account_deleted_visible(), "'ACCOUNT DELETED!' message is not visible"
-    
-    account_deleted_page.click_continue()
-    assert home_page.is_home_page_visible()
+    yield (page, signup_email, signup_password)

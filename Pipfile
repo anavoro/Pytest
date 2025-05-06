@@ -4,10 +4,10 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pytest = "*"
-pytest-playwright = "*"
 faker = "*"
 pytest-asyncio = "*"
+pytest = "*"
+pytest-playwright = "*"
 
 [dev-packages]
 
