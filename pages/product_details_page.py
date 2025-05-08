@@ -4,6 +4,7 @@ from playwright.sync_api import expect
 class ProductDetailsPage(BasePage):
     def __init__(self, page):
         super().__init__(page)
+        
         self.page = page
         self.product_name = page.locator('h2:has-text("Blue Top")')
         self.product_category = page.locator('p:has-text("Category:")')

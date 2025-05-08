@@ -4,6 +4,7 @@ from pages.base_page import BasePage
 class HomePage(BasePage):
     def __init__(self, page: Page):
         super().__init__(page)
+        
         self.signup_login_button = 'a[href="/login"]'
         self.logout_button = 'a[href="/logout"]'
         self.home_page_title = 'Automation Exercise'
