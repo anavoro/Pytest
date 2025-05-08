@@ -12,6 +12,11 @@ class HomePage(BasePage):
         self.contact_us_link = "a[href='/contact_us']"
         self.test_cases_link = "a:has-text('Test Cases')"
         self.products_button = 'a[href="/products"]'
+        self.subscription_text = 'h2:has-text("Subscription")'
+        self.subscription_email_input = '#susbscribe_email'
+        self.subscription_button = '#subscribe'
+        self.subscription_success_message = '.alert-success.alert'
+
 
     def open_login_menu(self):
         self.click(self.signup_login_button)
@@ -51,3 +56,13 @@ class HomePage(BasePage):
     def navigate_to_products(self):
         self.click(self.products_button)
         self.page.wait_for_load_state("domcontentloaded")
+
+    def is_subscription_text_visible(self):
+        return self.page.is_visible(self.subscription_text)
+
+    def subscribe_with_email(self, email: str):
+        self.page.fill(self.subscription_email_input, email)
+        self.page.click(self.subscription_button)
+
+    def is_subscription_success_visible(self):
+        return self.page.is_visible(self.subscription_success_message)
