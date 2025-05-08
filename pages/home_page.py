@@ -17,7 +17,6 @@ class HomePage(BasePage):
         self.subscription_button = '#subscribe'
         self.subscription_success_message = '.alert-success.alert'
 
-
     def open_login_menu(self):
         self.click(self.signup_login_button)
 
