@@ -9,42 +9,45 @@ class HomePage(BasePage):
         self.home_page_title = 'Automation Exercise'
         self.logged_in_as = "a:has-text('Logged in as')"
         self.delete_account_button = "a:has-text('Delete Account')"
+        self.contact_us_link = "a[href='/contact_us']"
+        self.test_cases_link = "a:has-text('Test Cases')"
+        self.products_button = 'a[href="/products"]'
 
     def open_login_menu(self):
         self.click(self.signup_login_button)
 
     def is_home_page_visible(self):
-        return self.page.title() == self.home_page_title
+        return self.get_title() == self.home_page_title
 
     def is_logged_in_as_visible(self, username=None):
-        """Verify that 'Logged in as username' is visible"""
         if username:
             selector = f"a:has-text('Logged in as {username}')"
-            return self.page.is_visible(selector)
-        return self.page.is_visible(self.logged_in_as)
+            return self.is_visible(selector)
+        return self.is_visible(self.logged_in_as)
 
     def get_logged_in_username(self) -> str:
-        """Get the displayed username after login"""
-        return self.page.inner_text(self.logged_in_as)
+        return self.get_text(self.logged_in_as)
 
     def click_delete_account(self):
-        """Click the 'Delete Account' button"""
         self.click(self.delete_account_button)
 
     def click_logout_account(self): 
         self.click(self.logout_button) 
 
     def is_logout_button_visible(self, timeout: int = 5000) -> bool:
-        """Checks if the logout button is visible."""
-        try:
-            self.page.wait_for_selector(self.logout_button, state='visible', timeout=timeout)
-            return True
-        except:
-            return 
-        
+        return self.is_visible(self.logout_button, timeout)
+
     def is_signup_login_button_visible(self, timeout: int = 5000) -> bool:
-        try:
-            self.page.wait_for_selector(self.signup_login_button, state='visible', timeout=timeout)
-            return True
-        except:
-            return
+        return self.is_visible(self.signup_login_button, timeout)
+
+    def navigate_to_contact_us(self):
+        self.click(self.contact_us_link)
+        self.page.wait_for_load_state("domcontentloaded")
+
+    def navigate_to_test_cases(self):
+        self.click(self.test_cases_link)
+        self.page.wait_for_load_state("domcontentloaded")
+
+    def navigate_to_products(self):
+        self.click(self.products_button)
+        self.page.wait_for_load_state("domcontentloaded")

@@ -9,7 +9,7 @@ class LoginPage(BasePage):
         self.login_password_field = 'input[data-qa="login-password"]'
         self.login_button = 'button[data-qa="login-button"]'
         self.login_error_message = 'p:has-text("Your email or password is incorrect!")'
-        self.error_message = '#login_error'
+        self.signup_error_message = 'p:has-text("Email Address already exist!")'
         
         # Signup selectors
         self.signup_name_field = 'input[data-qa="signup-name"]'
@@ -56,8 +56,11 @@ class LoginPage(BasePage):
         return self.is_visible(self.new_user_signup_heading)
     
     def get_error_message_text(self):
+        self.wait_for_selector(self.login_error_message, state='visible', timeout=5000)
         return self.get_text(self.login_error_message)
     
+    def get_signup_error_message_text(self):
+        return self.get_text(self.signup_error_message)
+    
     def is_logged_in(self):
-        """Check if user is logged in by verifying logout button is visible"""
         return self.is_visible(self.logout_button)

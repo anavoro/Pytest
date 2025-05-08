@@ -20,9 +20,13 @@ class AccountDeletedPage:
         self.account_deleted_message = "[data-qa='account-deleted']"
         self.continue_button = "[data-qa='continue-button']"
     
-    def is_account_deleted_visible(self):
-        """Verify that 'ACCOUNT DELETED!' message is visible"""
-        return self.page.is_visible(self.account_deleted_message)
+    def is_account_deleted_visible(self, timeout: int = 5000) -> bool:
+        """Wait for and verify 'ACCOUNT DELETED!' message is visible"""
+        try:
+            self.page.wait_for_selector(self.account_deleted_message, state="visible", timeout=timeout)
+            return True
+        except:
+            return False
     
     def click_continue(self):
         """Click the 'Continue' button"""
