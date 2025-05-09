@@ -57,10 +57,16 @@ class HomePage(BasePage):
 
     # ---------- Authentication ----------
     def is_logged_in_as_visible(self, username: str = None) -> bool:
-        if username:
-           return self.page.locator("a", has_text=f"Logged in as {username}").is_visible()
-        return self.logged_in_as_text.is_visible()
-
+       try:
+            self.page.wait_for_load_state("domcontentloaded", timeout=10000)
+            if username:
+               return bool(self.page.locator(f"a:has-text('Logged in as {username}')").is_visible(timeout=10000))
+            else:
+               return bool(self.logged_in_as_text.is_visible(timeout=10000))
+       except Exception as e:
+            print(f"Error checking logged in status: {e}")
+            return False
+    
     def get_logged_in_username(self) -> str:
         text = self.logged_in_as_text.inner_text()
         return text.replace("Logged in as", "").strip()

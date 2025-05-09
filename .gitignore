@@ -1,1 +1,29 @@
+# Byte-compiled / cache
 __pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# VS Code and PyCharm settings (optional)
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Allure test results
+allure-results/
+allure-report/
+
+# Playwright browser binaries (if you're using default install location)
+playwright/.cache/
+
+# Test reports
+reports/
+test-results/
+*.log

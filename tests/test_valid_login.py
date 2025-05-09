@@ -1,4 +1,5 @@
 import pytest
+from utils.tools import take_screenshot
 
 @pytest.mark.login
 def test_register_and_login(test_setup, new_user_data):
@@ -19,6 +20,8 @@ def test_register_and_login(test_setup, new_user_data):
 
     login_page.login(email, password)
     assert home_page.is_logout_button_visible(), "Logout button not visible after login"
+    take_screenshot(page, "valid_login")
+
     
     home_page.click_delete_account()
     assert account_deleted_page.is_account_deleted_visible(), "'ACCOUNT DELETED!' message is not visible"
