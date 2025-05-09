@@ -107,7 +107,7 @@ def new_user_data(test_setup, request):
     
     params = getattr(request, 'param', {})
     should_logout = params.get('logout', True)  
-    
+
     assert home_page.is_home_page_visible()
     
     home_page.open_login_menu()
@@ -156,7 +156,6 @@ def new_user_data(test_setup, request):
     
     yield (page, signup_email, signup_password, signup_name)
 
-# Corrected: Moved out of new_user_data fixture and fixed indentation
 @pytest.fixture(scope="session")
 def faker():
     return fake

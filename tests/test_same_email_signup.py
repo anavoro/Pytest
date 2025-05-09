@@ -1,5 +1,6 @@
 import pytest
 
+@pytest.mark.login
 def test_signup_with_same_email(login_page_setup):
     page = login_page_setup["page"]
     login_page = login_page_setup["login_page"]

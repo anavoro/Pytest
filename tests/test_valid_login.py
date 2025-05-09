@@ -1,5 +1,6 @@
 import pytest
 
+@pytest.mark.login
 def test_register_and_login(test_setup, new_user_data):
     """
     Test case for registering a user and then logging in again

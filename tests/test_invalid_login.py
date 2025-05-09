@@ -15,6 +15,6 @@ def test_login_with_invalid_credentials(login_page_setup):
     password = fake.password()
     login_page.login(email, password)
 
-    assert login_page.is_visible(login_page.login_error_message)
+    assert login_page.wait_for_selector(login_page.login_error_message, timeout=5000)
     expected_error = 'Your email or password is incorrect!'
     assert login_page.get_error_message_text() == expected_error

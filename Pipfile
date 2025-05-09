@@ -8,6 +8,7 @@ faker = "*"
 pytest-asyncio = "*"
 pytest = "*"
 pytest-playwright = "*"
+allure-pytest = "*"
 
 [dev-packages]
 

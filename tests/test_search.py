@@ -1,5 +1,7 @@
 import random
+import pytest
 
+@pytest.mark.product
 def test_search_random_product(test_setup):
     page = test_setup["page"]
     home_page = test_setup["home_page"]

@@ -1,5 +1,6 @@
 import pytest
 
+@pytest.mark.other
 def test_test_cases(test_setup):
     page = test_setup["page"]
     home_page = test_setup["home_page"]

@@ -13,7 +13,7 @@ class BasePage:
 
     def get_url(self) -> str:
         return self.page.url
-
+    
     def click(self, selector: str, timeout: int = 5000):
         self.page.wait_for_selector(selector, state='visible', timeout=timeout)
         self.page.click(selector, timeout=timeout)
@@ -21,9 +21,13 @@ class BasePage:
     def fill(self, selector: str, text: str, timeout: int = 5000):
         self.page.fill(selector, text, timeout=timeout)
 
-    def wait_for_selector(self, selector: str, state: str = 'visible', timeout: int = 5000):
-        self.page.wait_for_selector(selector, state=state, timeout=timeout)
-
+    def wait_for_selector(self, selector: str, state: str = 'visible', timeout: int = 5000) -> bool:
+        try:
+           self.page.wait_for_selector(selector, state=state, timeout=timeout)
+           return True
+        except:
+           return False
+        
     def is_visible(self, selector: str, timeout: int = 5000) -> bool:
         try:
             self.page.wait_for_selector(selector, state='visible', timeout=timeout)

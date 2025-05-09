@@ -1,5 +1,7 @@
 from faker import Faker
+import pytest 
 
+@pytest.mark.other
 def test_subscription_in_home_page(test_setup):
     page = test_setup["page"]
     home_page = test_setup["home_page"]

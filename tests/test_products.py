@@ -1,3 +1,6 @@
+import pytest
+
+@pytest.mark.product
 def test_products_and_details(test_setup):
     """
     Verify All Products and product detail page
@@ -7,7 +10,7 @@ def test_products_and_details(test_setup):
     products_page = test_setup["products_page"]
     product_details_page = test_setup["product_details_page"]
 
-    assert home_page.is_home_page_visible(), "Home page is not visible"
+    assert home_page.is_home_page_visible()
 
     home_page.navigate_to_products()
     products_page.verify_products_page_visible()
