@@ -1,5 +1,7 @@
+import pytest
 from faker import Faker
 
+@pytest.mark.login
 def test_login_with_invalid_credentials(login_page_setup):
     page = login_page_setup["page"]
     login_page = login_page_setup["login_page"]

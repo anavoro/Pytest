@@ -1,5 +1,6 @@
 from playwright.sync_api import Page
 
+
 class BasePage:
     def __init__(self, page: Page):
         self.page = page
@@ -16,7 +17,6 @@ class BasePage:
     def click(self, selector: str, timeout: int = 5000):
         self.page.wait_for_selector(selector, state='visible', timeout=timeout)
         self.page.click(selector, timeout=timeout)
-
 
     def fill(self, selector: str, text: str, timeout: int = 5000):
         self.page.fill(selector, text, timeout=timeout)

@@ -4,8 +4,8 @@ from pages.base_page import BasePage
 class SignupInfoPage(BasePage):
     def __init__(self, page: Page):
         super().__init__(page)
-        
-        self.enter_account_info_heading = 'b:has-text("Enter Account Information")'
+
+        self.enter_account_info_heading = '//b[contains(text(), "Enter Account Information")]'  # XPath
         self.gender_mr_radio = 'input[name="title"][id="id_gender1"]'
         self.gender_mrs_radio = 'input[name="title"][id="id_gender2"]'
         self.name_field = 'input[data-qa="name"][name="name"]'

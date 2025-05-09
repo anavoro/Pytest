@@ -1,9 +1,9 @@
-from playwright.sync_api import Page
-from pages.home_page import HomePage
+import pytest
 
-def test_user_logout(logged_in_user: Page): 
-    page = logged_in_user
-    home_page = HomePage(page)
+@pytest.mark.login
+def test_user_logout(logged_in_user): 
+    page = logged_in_user["page"]
+    home_page = logged_in_user["home_page"]
 
     assert home_page.is_logout_button_visible()
 

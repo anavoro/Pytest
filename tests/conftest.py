@@ -75,11 +75,15 @@ def logged_in_user(login_page_setup):
     """
     page = login_page_setup["page"]
     login_page = login_page_setup["login_page"]
+    home_page = login_page_setup["home_page"]
     
     login_page.login("test-pytest@example.com", "test123")
     assert login_page.is_logged_in(), "Failed to log in"
 
-    return page
+    return {
+        "page": page,
+        "home_page": home_page
+    }
 
 @pytest.fixture
 def new_user_data(test_setup, request):
@@ -107,12 +111,10 @@ def new_user_data(test_setup, request):
     assert home_page.is_home_page_visible()
     
     home_page.open_login_menu()
-
-    # Unified URL waiting pattern
     try:
         page.wait_for_url('**/login', timeout=10000)
     except:
-        pass  # Already on the right page or different URL pattern
+        pass 
 
     signup_name = fake.name()
     signup_email = fake.email()

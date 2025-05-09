@@ -30,5 +30,6 @@ def test_contact_us_form(test_setup):
     contact_us_page.verify_success_message()
 
     contact_us_page.click_home_button()
+    
     assert home_page.is_home_page_visible()
     

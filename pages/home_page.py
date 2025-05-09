@@ -4,7 +4,7 @@ from pages.base_page import BasePage
 class HomePage(BasePage):
     def __init__(self, page: Page):
         super().__init__(page)
-        
+
         self.signup_login_button = 'a[href="/login"]'
         self.logout_button = 'a[href="/logout"]'
         self.home_page_title = 'Automation Exercise'
@@ -57,12 +57,12 @@ class HomePage(BasePage):
         self.click(self.products_button)
         self.page.wait_for_load_state("domcontentloaded")
 
-    def is_subscription_text_visible(self):
-        return self.page.is_visible(self.subscription_text)
+    def is_subscription_text_visible(self, timeout: int = 5000):
+        return self.is_visible(self.subscription_text, timeout)
 
     def subscribe_with_email(self, email: str):
         self.page.fill(self.subscription_email_input, email)
         self.page.click(self.subscription_button)
 
-    def is_subscription_success_visible(self):
-        return self.page.is_visible(self.subscription_success_message)
+    def is_subscription_success_visible(self, timeout: int = 5000):
+        return self.is_visible(self.subscription_success_message, timeout)
