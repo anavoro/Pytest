@@ -1,5 +1,6 @@
 import pytest
 import allure
+import os
 
 @pytest.mark.other
 @allure.feature("Other functionalities")
@@ -23,9 +24,9 @@ def test_contact_us_form(test_setup):
         message="This is a test message for the contact form."
     )
 
-    test_file_path = "test_upload.txt"
+    test_file_path = os.path.join("utils", "test_upload.txt")
     with open(test_file_path, "w") as f:
-        f.write("This is a test file for upload.")
+       f.write("This is a test file for upload.")
     
     contact_us_page.upload_file(test_file_path)
     
