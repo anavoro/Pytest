@@ -1,9 +1,10 @@
 from playwright.sync_api import Page, expect
+from pages.base_page import BasePage
 
-class TestCasesPage:
+class TestCasesPage(BasePage):
     
     def __init__(self, page: Page):
-        self.page = page
+        super().__init__(page)  
         self.test_cases_header = page.locator("h2.title.text-center", has_text="Test Cases")
 
     def verify_test_cases_loaded(self):

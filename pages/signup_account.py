@@ -45,15 +45,6 @@ class SignupInfoPage(BasePage):
         self.fill(self.password_field, password)
 
     def select_option(self, locator, value=None, label=None, index=None):
-        """
-        Select an option from a dropdown element.
-        
-        Args:
-            locator: The locator for the dropdown element
-            value: Select by value attribute
-            label: Select by visible text
-            index: Select by index
-        """
         dropdown = self.page.locator(locator)
         
         if value is not None:

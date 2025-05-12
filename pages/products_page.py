@@ -4,7 +4,7 @@ from playwright.sync_api import expect
 class ProductsPage(BasePage):
     def __init__(self, page):
         super().__init__(page)
-        
+
         self.page = page
         self.all_products_header = page.locator('h2.title.text-center:has-text("All Products")')
         self.products_list = page.locator('div.features_items')
@@ -18,7 +18,6 @@ class ProductsPage(BasePage):
         expect(self.all_products_header).to_be_visible()
 
     def verify_products_list_visible(self):
-        """Assert that products list is visible"""
         expect(self.products_list).to_be_visible()
 
     def click_view_first_product(self):
