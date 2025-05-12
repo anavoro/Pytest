@@ -1,12 +1,11 @@
 import pytest
+import allure
 
 @pytest.mark.login
 @pytest.mark.parametrize('new_user_data', [{'logout': False}], indirect=True)
+@allure.feature("Login & Authentication")
+@allure.story("Signup and deleting user")
 def test_register_user(test_setup, new_user_data):
-    """
-    Test case for registering a user and verifying account creation
-    Uses the new_user_data fixture with logout=False to stay logged in
-    """
     page = test_setup["page"]
     home_page = test_setup["home_page"]
     account_deleted_page = test_setup["account_deleted_page"]

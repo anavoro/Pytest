@@ -1,7 +1,10 @@
 from faker import Faker
 import pytest 
+import allure
 
 @pytest.mark.other
+@allure.feature("Other functionalities")
+@allure.story("Subscribing to the newsletter from the home page")
 def test_subscription_in_home_page(test_setup):
     page = test_setup["page"]
     home_page = test_setup["home_page"]

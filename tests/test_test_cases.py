@@ -1,6 +1,9 @@
 import pytest
+import allure
 
 @pytest.mark.other
+@allure.feature("Other functionalities")
+@allure.story("Verifying the test cases page visibility")
 def test_test_cases(test_setup):
     page = test_setup["page"]
     home_page = test_setup["home_page"]

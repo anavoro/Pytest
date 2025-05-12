@@ -1,12 +1,11 @@
 import pytest
 from utils.tools import take_screenshot
+import allure
 
 @pytest.mark.login
+@allure.feature("Login & Authentication")
+@allure.story("Login with valid credentials")
 def test_register_and_login(test_setup, new_user_data):
-    """
-    Test case for registering a user and then logging in again
-    Uses the default behavior of new_user_data fixture (logs out)
-    """
     page = test_setup["page"]
     home_page = test_setup["home_page"]
     login_page = test_setup["login_page"]

@@ -1,10 +1,10 @@
 import pytest
+import allure
 
 @pytest.mark.product
+@allure.feature("Products")
+@allure.story("Verify product list and product details visibility")
 def test_products_and_details(test_setup):
-    """
-    Verify All Products and product detail page
-    """
     page = test_setup["page"]
     home_page = test_setup["home_page"]
     products_page = test_setup["products_page"]

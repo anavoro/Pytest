@@ -13,6 +13,9 @@ from pages.contact_us_page import ContactUsPage
 from pages.test_cases_page import TestCasesPage
 from pages.products_page import ProductsPage
 from pages.product_details_page import ProductDetailsPage
+from utils.test_data import Data
+from dotenv import load_dotenv
+load_dotenv()
 
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
@@ -21,6 +24,9 @@ fake = Faker()
 
 def pytest_addoption(parser):
     parser.addoption('--browser_name', action='store', default='chromium')
+
+def get_base_url():
+    return os.getenv("BASE_URL")
 
 @pytest.fixture(scope="session")
 def faker():
@@ -35,7 +41,7 @@ def test_setup(playwright: Playwright, request):
     browser = browser_type.launch(headless=headless)
     context = browser.new_context(viewport={"width": 1920, "height": 1080})
     page = context.new_page()
-    page.goto("https://automationexercise.com", wait_until="domcontentloaded", timeout=20000)
+    page.goto(get_base_url(), wait_until="domcontentloaded", timeout=20000)
     yield {
         "page": page,
         "home_page": HomePage(page),
@@ -54,7 +60,7 @@ def test_setup(playwright: Playwright, request):
 @pytest.fixture(scope="function")
 def login_page_setup(page: Page):
     page.set_viewport_size({'width': 1920, 'height': 1080})
-    page.goto('https://automationexercise.com', wait_until='domcontentloaded', timeout=20000)
+    page.goto(get_base_url(), wait_until='domcontentloaded', timeout=20000)
     home_page = HomePage(page)
     login_page = LoginPage(page)
     
@@ -80,7 +86,7 @@ def logged_in_user(login_page_setup):
     login_page = login_page_setup["login_page"]
     home_page = login_page_setup["home_page"]
     
-    login_page.login("test-pytest@example.com", "test123")
+    login_page.login(Data.EMAIL, Data.PASSWORD) 
     assert login_page.is_logged_in(), "Failed to log in"
 
     return {

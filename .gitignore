@@ -27,3 +27,5 @@ playwright/.cache/
 reports/
 test-results/
 *.log
+
+.env

@@ -1,7 +1,10 @@
 import pytest
+import allure
 from faker import Faker
 
 @pytest.mark.login
+@allure.feature("Login & Authentication")
+@allure.story("Login with Invalid Credentials")
 def test_login_with_invalid_credentials(login_page_setup):
     page = login_page_setup["page"]
     login_page = login_page_setup["login_page"]
