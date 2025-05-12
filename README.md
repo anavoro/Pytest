@@ -10,23 +10,24 @@ Playwright - Pytest is a project that utilizes the Playwright pytest framework t
 
    ```bash
    git clone https://github.com/yourusername/playwright-pytest.git
+   cd pytest
    ```
 
 2. Install the necessary dependencies:
 
    ```bash
-   python -m pip install --upgrade pip
-   pip install pipenv
-   pipenv install --dev
-   pipenv run pip install pytest-playwright
-   pipenv run playwright install
-   pipenv run playwright install chromium
+    python -m pip install --upgrade pip
+    pip install pipenv
+    pipenv install --dev
+    pipenv run pip install pytest-playwright
+    pipenv run playwright install chromium
    ```
 
 3. To run the tests:
 
    ```bash
    pytest
+   pytest --browser chromium --headed  # Run with visible browser
    ```
 
 4. To generate the Allure report:
