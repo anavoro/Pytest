@@ -1,0 +1,19 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"
+    Verify All Products and product detail page
+    ","1316","test_products_and_details","tests","Mon May 12 05:06:18 GMT 2025","passed","Mon May 12 05:06:20 GMT 2025","","test_products","",""
+"","426","test_signup_with_same_email[chromium]","tests","Mon May 12 05:06:17 GMT 2025","passed","Mon May 12 05:06:18 GMT 2025","","test_same_email_signup","",""
+"","212","test_subscription_in_home_page","tests","Mon May 12 05:06:26 GMT 2025","passed","Mon May 12 05:06:26 GMT 2025","","test_subscription","",""
+"","846","test_search_random_product","tests","Mon May 12 05:06:20 GMT 2025","passed","Mon May 12 05:06:21 GMT 2025","","test_search","",""
+"","361","test_test_cases","tests","Mon May 12 05:06:27 GMT 2025","passed","Mon May 12 05:06:27 GMT 2025","","test_test_cases","",""
+"","1141","test_contact_us_form","tests","Mon May 12 05:06:09 GMT 2025","passed","Mon May 12 05:06:10 GMT 2025","","test_contact_us","",""
+"","612","test_login_with_invalid_credentials[chromium]","tests","Mon May 12 05:06:12 GMT 2025","passed","Mon May 12 05:06:12 GMT 2025","","test_invalid_login","",""
+"
+    Test case for registering a user and verifying account creation
+    Uses the new_user_data fixture with logout=False to stay logged in
+    ","629","test_register_user[new_user_data0]","tests","Mon May 12 05:06:25 GMT 2025","passed","Mon May 12 05:06:26 GMT 2025","","test_signup","",""
+"
+    Test case for registering a user and then logging in again
+    Uses the default behavior of new_user_data fixture (logs out)
+    ","2462","test_register_and_login","tests","Mon May 12 05:06:32 GMT 2025","passed","Mon May 12 05:06:34 GMT 2025","","test_valid_login","",""
+"","510","test_user_logout[chromium]","tests","Mon May 12 05:06:15 GMT 2025","passed","Mon May 12 05:06:15 GMT 2025","","test_logout","",""
